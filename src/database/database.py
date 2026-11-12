@@ -24,11 +24,7 @@ class Database:
             return False
         
     def find(self, id: int) -> BookSchema | None:
-        try:
-            return self.database.get(id)
-        except Exception as e:
-            print(f"Error on find: \n {e}")
-            return None
+        return self.database.get(id)
             
     def update(self, data: dict[str, Any], id: int) -> bool:
         try:
