@@ -1,6 +1,6 @@
 import random
 
-def generate_books(qtd: int) -> list:
+def generate_books(qtd: int):
     books: list[dict] = []
     
     categories: list = ["Didatico", "Matematica", "Engenharia"]
@@ -15,7 +15,7 @@ def generate_books(qtd: int) -> list:
         book["pages"] = random.randint(100, 600)
         books.append(book)
     
-    return books
+    return books, categories, authors
 
 
     
