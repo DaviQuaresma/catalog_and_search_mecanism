@@ -3,6 +3,7 @@ from helpers.raw_insert import generate_books
 from helpers.idented_data import idented_data
 from algorithms.linear_search import linear_search
 from algorithms.category_filter import category_filter
+from algorithms.selection_sort import sort
 
 
 def main():
@@ -54,16 +55,23 @@ def main():
                     return False
 
                 filtered_list = category_filter(books, category.strip())
-                
-                if filtered_list:
-                    print("-" * 40)
-                    for book in filtered_list:
-                        for key, value in book.items():
-                            print(f"{key} => {value}")
-                        print("-" * 40)
+                idented_data(filtered_list)
 
             case 4:
-                    
+                print("Escolha a ordenação desejada:")
+                print("1 - Desc")
+                print("2 - Asc")
+                print("=========================")
+                order = int(input(f"Escolha: "))
+                print("=========================\n")
+                
+                if order not in (1, 2):
+                    print("Você escolheu uma opção invalida!")
+                    return
+                
+                sorted_books = sort(books, order)
+                idented_data(sorted_books)
+                
             case 8:
                 print("Saindo")
                 break
