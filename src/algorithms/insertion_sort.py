@@ -1,13 +1,14 @@
-def insertion_sort(arr):
-    n = len(arr)
+def insertion_sort(data):
+    n = len(data)
+    
     for i in range(1, n):
-        key = arr[i]
+        key = data[i]
         j = i - 1
-
-        while j >= 0 and arr[j] > key:
-            arr[j + 1] = arr[j]
+        
+        while j >= 0 and data[j].get("id") > key.get("id"):
+            data[j + 1] = data[j]
             j -= 1
 
-        arr[j + 1] = key
+        data[j + 1] = key
 
-    return arr
+    return data

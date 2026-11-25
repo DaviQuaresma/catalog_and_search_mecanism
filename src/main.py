@@ -79,9 +79,8 @@ def main():
                 idented_data(sorted_books)
                 
             case 5:
-                arr = [12,11,13,5,6]
-                insertion_sort(arr)
-                print(*arr)
+                arr = insertion_sort(data)
+                print(arr)
             case 8:
                 print("Saindo")
                 break
