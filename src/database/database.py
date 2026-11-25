@@ -8,9 +8,16 @@ class Database:
         pass
 
 
-    def get(self) -> list[BookSchema]:
-        return list(self.database.values())
+    def get(self) -> list[dict]:
+        data = list(self.database.values())
+        final_list = []
         
+        for book in data:
+            new_book = BookSchema.to_dict(book)
+            final_list.append(new_book)
+        
+        return final_list
+    
 
     def insert(self, data: dict[str, Any]) -> bool:
         try:

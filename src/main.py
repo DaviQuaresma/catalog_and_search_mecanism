@@ -4,7 +4,8 @@ from helpers.idented_data import idented_data
 from algorithms.linear_search import linear_search
 from algorithms.category_filter import category_filter
 from algorithms.selection_sort import sort
-
+from algorithms.insertion_sort import insertion_sort
+import random
 
 def main():
     option = 0
@@ -13,7 +14,11 @@ def main():
 
     for book in books:
         database.insert(book)
-
+        
+    data = database.get()
+    
+    random.shuffle(data)
+    
     while True:
 
         print("\n=========================")
@@ -23,6 +28,7 @@ def main():
         print("2 - Busca Linear por titulo e autor O(n)")
         print("3 - Filtros por categoria")
         print("4 - Ordenação por seleção")
+        print("5 - Inserção ordenada")
         print("8 - Saindo")
         print("=========================")
         option = int(input(f"Escolha: "))
@@ -30,7 +36,7 @@ def main():
 
         match option:
             case 1:
-                idented_data(books)
+                idented_data(data)
             case 2:
                 title = str(input("Qual titulo deseja buscar?\n"))
                 author = str(input("Qual autor deseja buscar?\n"))
@@ -39,7 +45,7 @@ def main():
                     print("Autor desconhecido ou nome digitado incorretamente!")
                     return False
 
-                book = linear_search(books, title.strip(), author.strip())
+                book = linear_search(data, title.strip(), author.strip())
 
                 if book:
                     print("-" * 40)
@@ -54,7 +60,7 @@ def main():
                     print("Categoria desconhecida ou digitada incorretamente!")
                     return False
 
-                filtered_list = category_filter(books, category.strip())
+                filtered_list = category_filter(data, category.strip())
                 idented_data(filtered_list)
 
             case 4:
@@ -69,9 +75,13 @@ def main():
                     print("Você escolheu uma opção invalida!")
                     return
                 
-                sorted_books = sort(books, order)
+                sorted_books = sort(data, order)
                 idented_data(sorted_books)
                 
+            case 5:
+                arr = [12,11,13,5,6]
+                insertion_sort(arr)
+                print(*arr)
             case 8:
                 print("Saindo")
                 break

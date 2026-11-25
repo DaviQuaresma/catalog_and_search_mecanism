@@ -23,3 +23,14 @@ class BookSchema:
             year=int(data["year"]),
             pages=int(data["pages"]),
         )
+        
+    @classmethod
+    def to_dict(cls, data: Self) -> dict:
+        book = {}
+        book["id"] = data.id
+        book["title"] = data.title
+        book["author"] = data.author
+        book["category"] = data.category
+        book["year"] = data.year
+        book["pages"] = data.pages
+        return book
