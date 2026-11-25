@@ -80,7 +80,7 @@ def main():
                 
             case 5:
                 arr = insertion_sort(data)
-                print(arr)
+                idented_data(arr)
             case 8:
                 print("Saindo")
                 break
