@@ -5,6 +5,7 @@ from algorithms.linear_search import linear_search
 from algorithms.category_filter import category_filter
 from algorithms.selection_sort import sort
 from algorithms.insertion_sort import insertion_sort
+from enums.order_by import OrderBy
 import random
 
 def main():
@@ -79,8 +80,44 @@ def main():
                 idented_data(sorted_books)
                 
             case 5:
-                arr = insertion_sort(data)
-                idented_data(arr)
+                new_book = {}
+                print("\n=========================")
+                print("Adicione um livro novo")
+                print("=========================")
+                new_book["title"] = str(input(f"1 - Titulo do livro: "))
+                new_book["author"] = str(input(f"2 - Autor do livro: "))
+                new_book["category"] = str(input(f"3 - Categoria do livro: "))
+                new_book["year"] = int(input(f"4 - Ano do livro: "))
+                new_book["pages"] = int(input(f"5 - Quantidade de paginas: "))
+                print("=========================\n")
+                
+                print("\n=========================")
+                print("Ordenar por: ")
+                print("=========================")
+                print("1 - ID")
+                print("2 - YEAR")
+                print("3 - PAGES")
+                print("=========================")
+                option = int(input(f"Escolha: "))
+                print("=========================\n")
+                
+                order_by = 0
+                
+                if option == 1:
+                    order_by = OrderBy.ID
+                elif option == 2:
+                    order_by = OrderBy.YEAR
+                elif option == 3:
+                    order_by = OrderBy.PAGES
+                else:
+                    print("Opção não aceita")
+                    return
+    
+                database.insert(new_book)
+                books = database.get()
+                sorted_books = insertion_sort(books, order_by)
+                idented_data(sorted_books)
+                
             case 8:
                 print("Saindo")
                 break

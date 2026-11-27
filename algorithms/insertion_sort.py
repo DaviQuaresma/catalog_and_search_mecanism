@@ -1,4 +1,6 @@
-def insertion_sort(unorder_data: list[dict]):
+from enums.order_by import OrderBy
+
+def insertion_sort(unorder_data: list[dict], order_by: OrderBy):
     data = unorder_data.copy()
     n = len(data)
     
@@ -6,7 +8,10 @@ def insertion_sort(unorder_data: list[dict]):
         key = data[i]
         j = i - 1
         
-        while j >= 0 and data[j].get("id") > key.get("id"): # pyright: ignore[reportOptionalOperand]
+        print(data[j])
+        print(type(data[j]))
+        
+        while j >= 0 and data[j].get("id") > key.get("id"):
             data[j + 1] = data[j]
             j -= 1
 
